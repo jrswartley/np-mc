@@ -102,7 +102,7 @@ class Simulation(object):
         translate_move = mvc.TranslationMove(self,max_disp,[1])
         swap_move = mvc.CBMCSwap(self,anchortype,type_lengths,parallel=parallel)
         rotation_move = mvc.RotationMove(self,anchortype,0.1745)
-        self.moves = [cbmc_move,translate_move,rotation_move]
+        self.moves = [cbmc_move,swap_move,translate_move,rotation_move]
     
     def initialize_data_files(self,restart=False):
         if not restart:
