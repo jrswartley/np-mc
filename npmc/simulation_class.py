@@ -1,13 +1,13 @@
 """This module contains the simulation class and associated functions which are meant to encapsulate a LAMMPS simulation.
 """
 from lammps import lammps
-import molecule_class as mol
-import atom_class as atm
-import move_class as mvc
+import npmc.molecule_class as mol
+import npmc.atom_class as atm
+import npmc.move_class as mvc
 import os
 import numpy as np
 import random as rnd
-import forcefield_class as ffc
+import npmc.forcefield_class as ffc
 import multiprocessing as mpc
 #import dill
 #from pathos.multiprocessing import ProcessPool
@@ -37,8 +37,8 @@ class Simulation(object):
     """
     def __init__(self,init_file,datafile,dumpfile,temp,max_disp=1.0,type_lengths=(5,13),numtrials=5,anchortype=2,restart=False,parallel=False):
         dname = os.path.dirname(os.path.abspath(init_file))
-        print "Configuration file is "+str(init_file)
-        print 'Directory name is '+dname
+        print("Configuration file is ".format(init_file))
+        print('Directory name is '.format(dname))
         os.chdir(dname)
 
         self.lmp = lammps("",["-echo","none","-screen","lammps.out"])
@@ -102,7 +102,7 @@ class Simulation(object):
         translate_move = mvc.TranslationMove(self,max_disp,[1])
         swap_move = mvc.CBMCSwap(self,anchortype,type_lengths,parallel=parallel)
         rotation_move = mvc.RotationMove(self,anchortype,0.1745)
-        self.moves = [cbmc_move,translate_move,swap_move,rotation_move]
+        self.moves = [cbmc_move,translate_move,rotation_move]
     
     def initialize_data_files(self,restart=False):
         if not restart:
@@ -115,7 +115,7 @@ class Simulation(object):
 
     def get_last_step_number(self):
         last_line = check_output(["tail","-1",self.potential_file.name])
-        return(int(last_line.split('\t')[0]))
+        return(int(last_line.decode().split('\t')[0]))
         
 
     def minimize(self,force_tol=1e-3,e_tol=1e-5,max_iter=200):

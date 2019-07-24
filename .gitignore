@@ -1,13 +1,14 @@
-*.xyz
 *.lmp
 *.lammps
 *.pyc
 *.c
 *.lmi
 *.out
-*.txt
 /dist/
 /*.egg-info
+*.eggs/
+.eggs
 
+Rosenbluth_Data.txt
 !requirements.txt
 trial*/
