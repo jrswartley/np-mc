@@ -9,7 +9,6 @@ import numpy as np
 import random as rnd
 import npmc.forcefield_class as ffc
 import multiprocessing as mpc
-#import dill
 #from pathos.multiprocessing import ProcessPool
 import concurrent.futures as cncf
 from math import *
