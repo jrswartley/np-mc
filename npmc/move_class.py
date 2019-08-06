@@ -470,7 +470,11 @@ class RotationMove(Move):
             self.num_accepted+=1
         return(accepted)
 
-
+def get_bond_angle(position1,position2,position3):
+    vector1 = position2-position1   
+    vector2 = position2-position3
+    angle = np.arccos(np.dot(vector1, vector2)/(np.linalg.norm(vector1)*np.linalg.norm(vector2)))
+    return angle
 
 
 
