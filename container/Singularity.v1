@@ -11,7 +11,7 @@ From: ubuntu:18.04
 			python\
 			python-pip
 	git clone -b stable_12Dec2018 https://github.com/lammps/lammps.git
-	git clone https://github.com/jrswartley/np-mc.git
+	git clone -b master https://github.com/jrswartley/np-mc.git
 	cd lammps
 	mkdir build
 	cd build
