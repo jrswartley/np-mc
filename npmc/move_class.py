@@ -280,7 +280,7 @@ class CBMCSwap(CBMCRegrowth):
         angle = get_bond_angle(positions[-3],positions[-2],positions[-1])
         return vector1,vector2,rotation_axis,angle
 
- def adjust_first_regrowth_atoms(self,mol1,mol2,positions_mol1,positions_mol2):
+    def adjust_first_regrowth_atoms(self,mol1,mol2,positions_mol1,positions_mol2):
         vector1_1,vector1_2,rotation_axis1,angle1 = self.get_rotation_angles_vectors(positions_mol1)
         vector2_1,vector2_2,rotation_axis2,angle2 = self.get_rotation_angles_vectors(positions_mol2)
         move1 = positions_mol2[-2]-molc.rot_quat(vector2_1,angle1,rotation_axis2)*np.linalg.norm(vector1_2)/np.linalg.norm(vector2_1)-mol1.getAtomByMolIndex(self.starting_index).position
